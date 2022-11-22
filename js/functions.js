@@ -10,13 +10,10 @@
  */
 
 const sayHello = (name) => {
-    let message = "Hello " + name;
+    let message = "Hello " + name + "!";
     return(message);
 };
-
-console.log(sayHello("Codeup!"));
-
-
+console.log(sayHello("Codeup"));
 
 /**
  * TODO:
@@ -35,7 +32,7 @@ console.log(helloMessage);
  * console.
  */
 
-let myName = "Steve"
+let myName = "Steve";
 console.log(sayHello(myName));
 
 
@@ -69,6 +66,7 @@ const isTwo = (num) =>{
 // console.log(isTwo(2));
 // console.log(isTwo(3));
 console.log(random, isTwo(random));
+
 /**
  * TODO:
  * Create a function named 'calculateTip' to calculate a tip on a bill at a
@@ -88,7 +86,6 @@ const calculateTip = (amount, tip) => {
 console.log(calculateTip(20, 20));
 console.log(calculateTip(25, 25.50));
 console.log(calculateTip(15, 33.42));
-
 
 /**
  * TODO:
