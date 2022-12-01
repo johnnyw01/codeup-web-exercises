@@ -1,4 +1,4 @@
-//Exercise 1:
+// Exercise 1:
 
 let userInput = prompt("Please enter an odd number between 1 and 50.");
 let userValue;
@@ -22,7 +22,20 @@ while (true) {
     }
 }
 
+// *****************OR**********************
 
 
 
-
+// while(true){
+//     let userNum = prompt("Please enter an odd number between 1 and 50.");
+//     userNum = parseFloat(userNum);
+//     if(userNum % 2 ===1 && userNum <= 50 && userNum >= 1){
+//         for(let i = 1; i <= 50; i+=2){
+//             if(i === userNum){
+//                 console.log(`Yikes! Skipping number ${i}`);
+//                 continue;
+//             }
+//                 console.log(`Here is an odd number ${i}`)
+//         }break;
+//     }
+// }
