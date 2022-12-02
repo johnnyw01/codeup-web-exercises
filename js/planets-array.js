@@ -48,3 +48,18 @@
     console.log("Sorting the planets array.");
     console.log(planets);
 })();
+
+
+
+// let names1 = ["Jack","Jim","John","Jake"]
+// for(let i = 0; i < names1.length; i++){
+//     console.log(names1[i])
+// }
+//
+// console.log('=========================');
+//
+// let names2 = ["Joe","Johnny","Aaron", "Fernando","Luke"];
+//
+// names2.forEach((name)=>{
+//     console.log(name);
+// })

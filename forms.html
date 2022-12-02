@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register With Us</title>
+</head>
+<body>
+<header><h1>Register With Us!</h1></header>
+<main>
+  <section>
+    <div>
+      <form method="POST" action="https://request-inspector.glitch.me/">
+        <label for="email">Email:</label><br>
+        <input type="text" id="email" name="email" placeholder="Type here"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password" placeholder="Type here"><br>
+        <label for="bio">Tell us a little bit about yourself</label><br>
+        <textarea id="bio" name="bio" rows="10" cols="40" placeholder="Type here..."></textarea><br>
+        <label>How did you hear about us?</label><br>
+        <input type="checkbox" id="billboard" name="billboard" value="billboard">
+        <label for="billboard">Billboard</label><br>
+        <input type="checkbox" id="radio" name="radio" value="radio advertisement">
+        <label for="radio">Radio advertisement</label><br>
+        <input type="checkbox" id="internet" name="internet" value="internet advertisement">
+        <label for="internet">Internet advertisement</label><br>
+        <input type="checkbox" id="other" name="other" value="other">
+        <label for="other">Other</label><br>
+        <label for="browser">What web browser are you using?</label><br>
+        <select id="browser" name="web browser">
+          <option value="chrome">Chrome</option>
+          <option value="firefox">Fire Fox</option>
+          <option value="safari">Safari</option>
+          <option value="opera">Opera</option>
+          <option value="brave">Brave</option>
+        </select><br><br>
+        <input type="submit">
+      </form>
+    </div>
+  </section>
+</main>
+</body>
+</html>
