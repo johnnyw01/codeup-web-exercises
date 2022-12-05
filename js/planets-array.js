@@ -19,19 +19,19 @@
      */
 
     planets.unshift('Sun');
-
+    //Mutation
     console.log('Adding "The Sun" to the beginning of the planets array.');
     console.log(planets);
 
     planets.push('Pluto')
-
+    //Mutation
     console.log('Adding "Pluto" to the end of the planets array.');
     console.log(planets);
-
+    //Mutation
     planets.shift();
     console.log('Removing "The Sun" from the beginning of the planets array.');
     console.log(planets);
-
+    //Mutation
     planets.pop();
     console.log('Removing "Pluto" from the end of the planets array.');
     console.log(planets);
