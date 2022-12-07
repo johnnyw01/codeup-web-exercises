@@ -183,5 +183,27 @@
      *   `showBookInfo` function.
      */
 
+    const createBook = (title, author_fName, author_lName) => {
+        return {
+            title: title,
+            author:{
+                firstname: author_fName,
+                lastname: author_lName,
+            }
+        }
+    }
+
+    console.log(createBook("The Whale", "Stephen","King"))
+
+
+
+    const showBookInfo = (book) => {
+        for(let i = 0; i<books.length;i++){
+            console.log(` Book # ${i+1} \n Title: ${books[i].title} \n Author: ${books[i].author.firstName} ${books[i].author.lastName} \n -- `)
+        }
+    }
+
+    showBookInfo(books)
+
 
 })();

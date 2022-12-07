@@ -50,8 +50,4 @@
     document.write(planetsList)
 
 
-
-
-
-
 })();
