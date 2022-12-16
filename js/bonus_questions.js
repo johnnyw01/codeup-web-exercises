@@ -172,3 +172,165 @@
 
 
 
+// Create a function, findAverageDogAge, that takes in a array of pet objects with age properties and returns the average age of a dog.
+
+//     const pets = [
+//     {
+//         name: 'Sparky',
+//         type: 'Fish',
+//         age: 4
+//     },
+//     {
+//         name: 'Mr. Pig',
+//         type: 'Cat',
+//         age: 4
+//     },
+//     {
+//         name: 'Bubba',
+//         type: 'Dog',
+//         age: 5
+//     },
+//     {
+//         name: 'Pickles',
+//         type: 'Dog',
+//         age: 10
+//     }
+//
+// ];
+
+// const findAverageDogAge = (pets)=>{
+//     let total = 0;
+//     let dogCount = 0;
+//
+//     pets.forEach((pet)=>{
+//         if(pet.type === 'Dog'){
+//             total += pet.age;
+//             dogCount++
+//         }
+//     });
+//     //Using a forLoop:
+//     // for(let i = 0; i < pets.length; i++){
+//     //     if(pets[i].type === 'Dog'){
+//     //         total += pets[i].age;
+//     //         dogCount++
+//     //     }
+//     // }
+//     return total/dogCount
+// }
+// console.log(findAverageDogAge(pets)); // returns 7.5
+//
+// ================================= WARM UP
+//
+// Create a function, returnPetsWithNoFish, that takes in a array of pet objects and returns an array of pet objects with no pets of type 'Fish'.
+
+//     const pets = [
+//     {
+//         name: 'Sparky',
+//         type: 'Fish',
+//         age: 4
+//     },
+//     {
+//         name: 'Mr. Pig',
+//         type: 'Cat',
+//         age: 4
+//     },
+//     {
+//         name: 'Bubba',
+//         type: 'Dog',
+//         age: 5
+//     },
+//     {
+//         name: 'Beans',
+//         type: 'Dog',
+//         age: 3
+//     },
+//     {
+//         name: 'Mr. Salmon',
+//         type: 'Fish',
+//         age: 1
+//     }
+// ];
+//
+//     const returnPetsWithNoFish = (pets) => {
+//         let results;
+//         pets.forEach((pet)=>{
+//             results = pets.filter(pet => pet.type !== 'Fish');
+//         });
+//         return results;
+//     }
+
+    ///Alternative way:
+    // const returnPetsWithNoFish = (pets) => {
+    //     const outPut = [];
+    //     pets.forEach((pet)=>{
+    //         if(pet.type !=== 'Fish'){
+    //             outPut.push(pet)
+    //         }
+    //     });
+    //     return outPut;
+    // }
+
+// console.log(returnPetsWithNoFish(pets)) // returns...
+
+    // [
+    // {
+    //     name: 'Mr. Pig',
+    //     type: 'Cat',
+    //     age: 4
+    // },
+    //     {
+    //         name: 'Bubba',
+    //         type: 'Dog',
+    //         age: 5
+    //     },
+    //     {
+    //         name: 'Beans',
+    //         type: 'Dog',
+    //         age: 3
+    //     }
+    // ]
+
+
+// ================================= WARM UP
+//
+// Create a function, returnLongestPetName, that takes in a array of pet objects and returns a string of the longest name for a pet.
+
+    const pets = [
+    {
+        name: 'Sparky',
+        type: 'Fish',
+        age: 4
+    },
+    {
+        name: 'Mr. Pig',
+        type: 'Cat',
+        age: 4
+    },
+    {
+        name: 'Bubba',
+        type: 'Dog',
+        age: 5
+    },
+    {
+        name: 'Beans',
+        type: 'Dog',
+        age: 3
+    },
+        {
+            name: 'Mr. Salmon',
+            type: 'Fish',
+            age: 1
+        }
+];
+
+let longestName = "" ;
+const returnLongestPetName = (pets) => {
+    pets.forEach((pet) => {
+        if(longestName.length < pet.name.length){
+            longestName = pet.name;
+        }
+    });
+    return longestName;
+}
+
+console.log(returnLongestPetName(pets)); // returns 'Mr. Salmon'
