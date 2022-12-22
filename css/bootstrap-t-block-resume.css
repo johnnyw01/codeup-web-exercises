@@ -1,0 +1,21 @@
+.cody {
+  font-size: 2.8rem;
+  letter-spacing: 0.5rem;
+}
+
+.developer {
+  font-size: 2.5rem;
+}
+
+.hr-custom {
+  border: 3px solid #37b24d;
+  border-radius: 5px;
+}
+
+.experience {
+  margin-bottom: 5rem;
+}
+
+.awards {
+  margin-bottom: 5rem;
+}
