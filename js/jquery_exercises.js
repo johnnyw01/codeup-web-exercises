@@ -27,8 +27,13 @@ $(() =>{
     // $('h1').css('background-color','yellow');
     // $('li').css('background-color','yellow');
     // $('p').css('background-color','yellow');
-    //
+
+    // alert($('h1').html());
+    // alert($('.h1 ').text());
+
     // $('h1, li, p').css('background-color','red');
+
+
 
 
     //**********************
@@ -50,8 +55,5 @@ $(() =>{
             $(this).css('color', 'black');
         }
     );
-
-
-
 
 })
