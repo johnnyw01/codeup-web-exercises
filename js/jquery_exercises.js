@@ -1,10 +1,15 @@
 $(() =>{
     "use strict";
 
+    //**********************
+    //Introduction
+
     // $(() => {
     //     alert( 'The DOM has DOMING!' );
     // });
 
+    //**********************
+    //Selectors
 
     //Id Selectors
     // let getH1 = $('#1').html();
@@ -18,13 +23,33 @@ $(() =>{
 
     //Element Selectors
 
-    $('li').css('font-size', '20px');
-    $('h1').css('background-color','yellow');
-    $('li').css('background-color','yellow');
-    $('p').css('background-color','yellow');
+    // $('li').css('font-size', '20px');
+    // $('h1').css('background-color','yellow');
+    // $('li').css('background-color','yellow');
+    // $('p').css('background-color','yellow');
+    //
+    // $('h1, li, p').css('background-color','red');
 
-    $('h1, li, p').css('background-color','red');
 
+    //**********************
+    //Events
+
+    $('#codeup').click(()=>{
+        $('#codeup').css('background-color', 'red');
+    })
+
+    $('p').dblclick(()=>{
+        $('p').css('font-size', '20px');
+    })
+
+    $('li').hover(
+        function (){
+            $(this).css('color', 'red');
+        },
+        function (){
+            $(this).css('color', 'black');
+        }
+    );
 
 
 
