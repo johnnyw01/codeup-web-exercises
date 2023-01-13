@@ -427,3 +427,139 @@
 // filterList([1,2,‘a’,‘b’]) // returns [1,2]
 // filterList([1,‘a’,‘b’,0,15]) // returns [1,0,15]
 // filterList([1,2,‘aasf’,‘1’,‘123’,123]) // returns [1,2,123]
+
+
+// Create a function, zipArrays, that takes two array inputs of the same length and returns an array with the elements of both arrays alternating in the order of first[0], second[0], first[1], second[1], etc. If both arrays are empty, return an empty array.
+
+
+ // const zipArrays = (arr1, arr2)=>{
+ //    let emptyArray = []
+ //    if(arr1.length === 0 && arr2.length === 0){
+ //        return emptyArray;
+ //    }else{
+ //        for(let i = 0; i < arr1.length; i+=1){
+ //            emptyArray.push(arr1[i]);
+ //            emptyArray.push(arr2[i]);
+ //        }
+ //        return emptyArray
+ //    }
+ // }
+
+// console.log(zipArrays([], [])) // returns []
+// console.log(zipArrays([1], [2])) // returns [1, 2]
+// console.log(zipArrays(['a', 'b'], ['c', 'd'])) // returns... ['a', 'c', 'b', 'd']
+// console.log(zipArrays([1,2,'a','b'], ['bob', null, 'sally', 25]) )// returns...
+//
+//     [
+//     1,
+//         'bob',
+//         2,
+//         null,
+//         'a',
+//         'sally',
+//         'b',
+//         25
+//     ]
+//
+// ================================= WARM UP
+
+// Write a function, getUserCredentials, that takes in a list of user objects and returns a list of user objects with only the username and password properties. Assume at least an array of one user object.
+
+
+    const users = [
+    {
+        firstName: 'Justin',
+        lastName: 'Reich',
+        dob: '1923-01-01',
+        username: 'jreich',
+        password: '$2y$10$UJlsa5vWq5DUKJjyO38gM.dCZfudWOFCrLWQosh0mhXKaZmRmvDse'
+    },
+    {
+        firstName: 'Sally',
+        lastName: 'Smith',
+        dob: '1935-03-11',
+        username: 'ssmith',
+        password: '$2y$10$VaLGU5.7uQLr.eg6kSI9seOcP4JY4XktWt28I9JgblAGIDpkDXbya'
+    },
+    {
+        firstName: 'Fred',
+        lastName: 'Smith',
+        dob: '1999-01-21',
+        username: 'fsmith',
+        password: '$2y$10$3USt6Dl8TNMkeh0KioPnfeVpynAotXvSIJ5xrzAHragPEAWMYEBNS'
+    },
+]
+
+const getUserCredentials = (input) =>{
+    let newList = []
+    input.forEach((item)=>{
+        newList.push({
+            username: item.username,
+            password: item.password
+        });
+    });
+    return newList
+}
+
+// console.log(getUserCredentials(users)) // returns...
+
+/*
+
+[
+  {
+    username: 'jreich',
+    password: '$2y$10$UJlsa5vWq5DUKJjyO38gM.dCZfudWOFCrLWQosh0mhXKaZmRmvDse'
+  },
+  {
+    username: 'ssmith',
+    password: '$2y$10$VaLGU5.7uQLr.eg6kSI9seOcP4JY4XktWt28I9JgblAGIDpkDXbya'
+  },
+  {
+    username: 'fsmith',
+    password: '$2y$10$3USt6Dl8TNMkeh0KioPnfeVpynAotXvSIJ5xrzAHragPEAWMYEBNS'
+  }
+]
+
+*/
+
+// This loop should print the numbers from 0 through 9 in the console
+
+// for (let i = 0; i < 10; i++) {
+//     console.log("The value of i is " + i);
+//     // i++;
+// }
+
+// desired output : 0, 1 ,2,  3, 4, 5, 6, 7, 8, 9
+
+// Create a function, shiftElementsOver, that takes in an array and returns the array with all elements moved one index further into the array. The final element should be moved to the front. Assume the input array will have three or more elements.
+
+const shiftElementsOver = (input) => {
+    input.unshift(input.pop());
+    return input;
+}
+
+// console.log(shiftElementsOver([1, 2, 3, 4, 5])); // returns [5, 1, 2, 3, 4]
+// console.log(shiftElementsOver(['bob', 'sally', 'mary'])); // returns ['mary', 'bob', 'sally']
+// console.log(shiftElementsOver([null, 123, 'hello world', true])); // returns [true, null, 123, 'hello world']
+
+
+
+var isColdOutside = true;
+
+var clothingToWear;
+
+// if (isColdOutside) {
+//     clothingToWear = 'sweater and a jacket';
+// } else {
+//     clothingToWear = 'shorts and a t-shirt';
+// }
+
+
+var band = new Object();
+
+
+band.shred = function() {
+    console.log('RAAAAAAAAAA!!!!');
+}
+
+band.shred();
