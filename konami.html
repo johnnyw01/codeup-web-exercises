@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="./css/konami.css">
+  <title>Konami Code</title>
+</head>
+<body>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-sm-12 konmai">
+      <div class="card border-0" >
+        <img src="images/konami/konami-code.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <p class="card-text remove-this"> DO NOT enter in this code</p>
+        </div>
+      </div>
+    </div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+  "use strict";
+
+  //key codes:
+  //up =38
+  //down = 40
+  //left = 37
+  //right = 39
+  //b = 66
+  //a = 65
+  //enter = 13
+  //3838404037393739666513
+ const konamiCode = ()=>{
+   let userInput = '';
+   let cheatCode = '3838404037393739666513';
+
+   $(document).keyup(function(event) {
+     let keyboardInput = (event.keyCode);
+     userInput += ("" + keyboardInput);
+     if (userInput === cheatCode) {
+       $(".card-img-top").attr('src', 'images/konami/stop.png');
+       $(".remove-this").addClass("blink_me");
+       $("p").text("CONGRATULATIONS you've added 30 lives!");
+     }
+   });
+ }
+
+ konamiCode();
+
+</script>
+</body>
+</html>
