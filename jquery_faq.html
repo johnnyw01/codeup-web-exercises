@@ -20,14 +20,17 @@
   .highlight{
     color: #da77f2;
   }
+  li{
+   list-style: none;
+  }
 
 </style>
 <body>
 <div class="page-wrapper">
   <div class="container my-5">
     <div class="row">
-      <div class="col-sm-12 text-center">
-        <!--Card-->
+      <div class="col-lg-6 text-center">
+        <!--Card 1-->
         <div class="card border-1">
           <img src="/images/jquery_faq/glacier-np.png" class="card-img-top" alt="...">
           <div class="card-body">
@@ -89,7 +92,54 @@
             </dl>
           </div>
         </div>
-        <!--End Card-->
+        <!--End Card 1-->
+      </div>
+
+
+        <div class="col-lg-6 text-center">
+          <!--Card 2-->
+        <div class="card border-1">
+          <img src="/images/jquery_faq/np-sign.png" class="card-img-top" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">
+              <h1 class="mb-5 ">National Park FAQs</h1>
+            </h5>
+            <div class="card-text">
+              <h3>Yosemite National Park</h3>
+                <ul>
+                  <li>Acreage:  Yosemite National Park covers an area of 747,956 acres along the central western slopes of the Sierra Nevada mountain range in east-central California.</li>
+                  <li>Visitation: Yosemite had 3.3 million visitors in 2021.</li>
+                  <li>Highest Elevation: Mount Lyell is the highest point in Yosemite National Park, at 13,114 feet (3,997 m).</li>
+                  <li>When Did It Become A National Park? On October 1, 1890, Yosemite became a national park.</li>
+                </ul>
+              <h3>Yellowstone National Park</h3>
+              <ul>
+                <li>Location: Idaho, Montana & Wyoming</li>
+                <li>Acreage:  Yellowstone encompasses 3,472 square miles (2,221,766 acres) which makes it larger than Rhode Island and Delaware combined.</li>
+                <li>Visitation: The park hosted 4,860,537 recreation visits in 2021, up 28% from 2020 (3,806,306 visits), making it the busiest year on record.</li>
+                <li>When Did It Become A National Park? Yellowstone became a national park on March 1, 1872. When President Ulysses S. Grant signed the Yellowstone National Park Protection Act into law, it protected more than 2 million acres of mountain wilderness, amazing geysers and vibrant landscapes for future generations to enjoy.</li>
+              </ul>
+              <h3>Glacier National Park</h3>
+              <ul>
+                <li>Location: Montana</li>
+                <li>Acreage: The country’s 10th national park, Montana’s Glacier preserves 1 million acres of glacier-carved peaks and valleys, pristine turquoise lakes and streams, and dense ancient forests for all to enjoy. </li>
+                <li>Visitation:  Glacier National Park in the United States attracted a total of approximately three million visitors in 2021.</li>
+                <li>When Did It Become A National Park? On May 11, 1910, President William Howard Taft signed a bill into law establishing Glacier National Park. </li>
+              </ul>
+              <h3>Grand Canyon National Park</h3>
+              <ul>
+                <li>Acreage: Grand Canyon National Park covers a total area of 1,217,403 acres</li>
+                <li>Visitation: A total of 4.53 million in 2021</li>
+                <li>Average annual precipitation: The South Rim receives 17 inches (43 cm) of annual precipitation on average, while the North Rim receives 26 (66 cm) inches of annual precipitation on average</li>
+                <li>When Did It Become A National Park? In 1903, President Theodore Roosevelt visited the canyon. He designated it a national monument in 1908. In 1919, President Woodrow Wilson made Grand Canyon a national park to protect the land and the resources within it, managed by the National Park Service.</li>
+              </ul>
+            </div>
+            <button type="button" class="np-button btn w-25 btn-primary">Click me</button>
+          </div>
+        </div>
+        <!--End Card 2-->
+        </div>
+
       </div>
     </div>
   </div>
@@ -104,6 +154,7 @@
 <script>
   "use strict";
 
+  //Toggles the invisible class on and off upon user click.
   $(document).ready(function() {
     $("dt").click(function(event) {
       event.preventDefault();
@@ -111,6 +162,76 @@
       $(this).toggleClass('highlight');
     });
   });
+
+//Changes the color of the last list item in each unordered list.
+  $(document).ready(function() {
+    $(".np-button").click(function(event) {
+      event.preventDefault();
+      // $('ul').children('li').last().css("color","red");
+      $('ul').each(function (index,element){
+        $(this)
+        .children('li')
+        .last()
+        .css("backgroundColor","yellow");
+        // $(this).children('li').toggleClass();
+      });
+    });
+  });
+
+  //Makes the list items bold when it's parent H3 is clicked.
+  $(document).ready(function() {
+    $("h3").click(function(event) {
+      event.preventDefault();
+      // $('ul').children('li').last().css("color","red");
+      $('ul').each(function (index,element){
+        $(this)
+        .children('li')
+        .css("fontWeight","bold");
+        // $(this).children('li').toggleClass();
+      });
+    });
+  });
+
+  //When any list item is clicked, first li of the parent ul will have its font color changed to blue.
+  $(document).ready(function() {
+    $('li').click(function () {
+      $(this)
+       .parent('ul')
+       .children('li')
+       .first('li')
+       .css('color', 'blue');
+    });
+  });
+
+
+  // ****BONUS****
+
+  // $(document).ready(function() {
+  //   // Left frame swaps to the right and takes the image from the frame in the center
+  //   $("#swap-left").click(function() {
+  //     var centerImage = $("#center-frame").css("background-image");
+  //     $("#right-frame").css("background-image", centerImage);
+  //   });
+  //
+  //   // Center frame swaps randomly to either the left or right
+  //   $("#swap-center").click(function() {
+  //     var random = Math.random();
+  //     if (random < 0.5) {
+  //       var leftImage = $("#left-frame").css("background-image");
+  //       $("#center-frame").css("background-image", leftImage);
+  //     } else {
+  //       var rightImage = $("#right-frame").css("background-image");
+  //       $("#center-frame").css("background-image", rightImage);
+  //     }
+  //   });
+  //
+  //   // Right frame swaps to the left and takes the image from the frame in the center
+  //   $("#swap-right").click(function() {
+  //     var centerImage = $("#center-frame").css("background-image");
+  //     $("#left-frame").css("background-image", centerImage);
+  //   });
+  // });
+
 
 </script>
 </body>

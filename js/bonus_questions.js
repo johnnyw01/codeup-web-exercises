@@ -624,7 +624,33 @@ const isDesirable = (obj) => {
     }
 }
 
-console.log(isDesirable(neighborhood1)) // returns false due to school rating
-console.log(isDesirable(neighborhood2)) // returns false due to crime rate
-console.log(isDesirable(neighborhood3)) // returns true
-console.log(isDesirable(neighborhood4)) // returns false due to median home price
+// console.log(isDesirable(neighborhood1)) // returns false due to school rating
+// console.log(isDesirable(neighborhood2)) // returns false due to crime rate
+// console.log(isDesirable(neighborhood3)) // returns true
+// console.log(isDesirable(neighborhood4)) // returns false due to median home price
+
+
+// / Create a function, encodeStr, that takes in a string and returns the string of characters with the following substitutions:
+//     const convertLetter = (str) =>{
+//         if(typeof str === 'number'){
+//             str.toString();
+//             return str;
+//         }
+// //     }
+//     console.log(convertLetter("1"));
+    const encodeStr = (str) => {
+        return str
+            .replace(/a/gi, "@")
+            .replace(/s/gi,"$")
+            .replace(/i/gi,"1");
+    }
+
+// ‘a’ or ‘A’ becomes ‘@’
+// ‘i’ or ‘I’ becomes ‘1’
+// ‘s’ or ‘S’ becomes ‘$’
+
+    // console.log(encodeStr('apple'));
+    // console.log(encodeStr('codeup'));
+    // console.log(encodeStr('SASS'));
+    // console.log(encodeStr('bike'));
+

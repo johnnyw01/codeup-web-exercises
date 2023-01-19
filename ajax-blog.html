@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Bootstrap-5-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css?family=Playfair&#43;Display:700,900&amp;display=swap" rel="stylesheet">
+  <title>Ajax Blog</title>
+</head>
+<!--Custom CSS-->
+<style>
+    body{
+        background-color: #e9ecef;
+    }
+    .navbar-collapse{
+        flex-grow: 0;
+    }
+    .container-custom{
+        background-color: #dee2e6;
+    }
+    .featured-text{
+        text-overflow: ellipsis;
+    }
+    .bg-custom{
+        background-color: #343a40;
+    }
+    .nav-link{
+        color: #ced4da;
+    }
+    .nav-link:hover{
+        color: #fff;
+    }
+
+</style>
+<body>
+
+<!--Start Navigation Bar-->
+    <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+        <div class="container-fluid ">
+            <a class="navbar-brand my-2 mb-lg-0 mx-5" href="#">BLOG NAME</a>
+            <button class="navbar-toggler me-5 bg-light" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse text-end" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto my-2 mb-lg-0">
+                    <li class="nav-item mx-5 ">
+                        <a class="nav-link " aria-current="page" href="#">Technology</a>
+                    </li>
+                    <li class="nav-item mx-5">
+                        <a class="nav-link " href="#">Design</a>
+                    </li>
+                    <li class="nav-item mx-5 ">
+                        <a class="nav-link " href="#">Science</a>
+                    </li>
+                    </ul>
+            </div>
+        </div>
+    </nav>
+    <!--End Navigation Bar-->
+
+<!--Start Main Content-->
+<main class="container container-custom shadow-lg p-3 mt-5 rounded">
+    <div class="row rows-col-1 g-0">
+        <div class="col-lg-6">
+        <!--Start Featured Blog Post-->
+                <div class="col-lg p-5 p-md-5 rounded text-bg-dark h-100">
+                    <h1 class="display-2 fst-italic">Featured blog post</h1>
+                    <p class="lead featured-text my-3">Yeah, but your scientists were so preoccupied with whether or not they could, they didn't stop to think if they should.God creates dinosaurs. God destroys dinosaurs. God creates Man. Man destroys God. Man creates Dinosaurs.Eventually, you do plan to have dinosaurs on your dinosaur tour, right? Eventually, you do plan to have dinosaurs on your dinosaur tour, right? God help us, we're in the hands of engineers. We gotta burn the rain forest, dump toxic waste, pollute the air, and rip up the OZONE! 'Cause maybe if we screw up this planet enough, they won't want it anymore! They're using our own satellites against us. And the clock is ticking. Hey, take a look at the earthlings. Goodbye! Is this my espresso machine? Wh-what is-h-how did you get my espresso machine? What do they got in there? King Kong? You're a very talented young man, with your own clever thoughts and ideas. Do you need a manager? Remind me to thank John for a lovely weekend. Just my luck, no ice. Drive us out of here! Yes, Yes, without the oops! Hey, you know how I'm, like, always trying to save the planet? Here's my chance. Must go faster. Must go faster... go, go, go, go, go!</p>
+                    <p class="lead mb-0"><a href="#" class="text-white fw-bold">Continue reading...</a></p>
+                </div>
+        </div>
+        <!--End Featured Blog Post-->
+    <!-- Start JSON Data-->
+        <div class="col-lg-6">
+            <div class="post-info" id="posts"></div>
+        </div>
+    </div>
+    <!-- End JSON Data-->
+</main>
+    <!--End Main Content-->
+<!--Start Footer-->
+<footer class=" text-center text-white mt-5 bg-custom">
+    <!-- Grid container -->
+    <div class="container p-4 pb-0 ">
+        <!-- Section: Form -->
+        <section class="">
+            <form action="">
+                <!--Grid row-->
+                <div class="row d-flex justify-content-center">
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <p class="pt-2">
+                            <strong>Sign up for our newsletter</strong>
+                        </p>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-md-5 col-12">
+                        <!-- Email input -->
+                        <div class="form-outline form-white mx-4 ">
+                            <input type="email" id="form5Example29" class="form-control text-center" placeholder="Email address..."/>
+                            <label class="form-label" for="form5Example29"></label>
+                        </div>
+                    </div>
+                    <!--Grid column-->
+
+                    <!--Grid column-->
+                    <div class="col-auto">
+                        <!-- Submit button -->
+                        <button type="submit" class="btn btn-outline-light mb-4">
+                            Subscribe
+                        </button>
+                    </div>
+                    <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </form>
+        </section>
+        <!-- Section: Form -->
+    </div>
+    <!-- Grid container -->
+
+    <!-- Copyright -->
+    <div class="text-center p-3 bg-dark" style="background-color: rgba(0, 0, 0, 0.2);">
+        © 2023
+        <a class="text-white" href="#">BLOG NAME</a>
+    </div>
+    <!-- Copyright -->
+</footer>
+<!--End Footer-->
+
+<!--Bootstrap-5-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+<!--Jquery Plug-in-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+  (function(){
+    "use strict";
+    function getBlogData(){
+
+      $.ajax('/data/blog.json').done(function (data) {
+        data.forEach(function(item){
+          addBlogData(item);
+        });
+      });
+    }
+    function addBlogData(item){
+      let data = " ";
+          data += '<div class="card border-1 ">'+
+                    '<div class="card-body">'+
+                      '<h1 class="card-title">' + item.title +'</h1>'+
+                      '<h6 class="card-text">' + item.date + '</h6>'+
+                      '<p class="card-text">' + item.content + '</p>'+
+                      '<h5 class="card-text text-capitalize">' +"#"+ item.categories.join(" #") + '</h5>'+
+                    '</div>'+
+                  '</div>';
+
+      $('.post-info').append(data);
+    }
+
+    getBlogData();
+  })();
+
+
+</script>
+</body>
+</html>
