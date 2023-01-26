@@ -55,9 +55,6 @@ let names = [];
 users.forEach((user) => {
     return emails.push(user.email);
 });
-users.forEach((user) => {
-    return names.push(user.name);
-});
 
 //5. TODO: replace `var` with `let` in the following declaration
 let developers = [];
@@ -66,16 +63,16 @@ users.forEach(({name, email, languages}) => {
     //       note that you can also use destructuring assignment in the function
     //       parameter definition
 
-    // users.forEach(function(user) {
-    //     // TODO: rewrite the code below to use object destructuring assignment
-    //     //       note that you can also use destructuring assignment in the function
-    //     //       parameter definition
     //     const name = user.name;
     //     const email = user.email;
     //     const languages = user.languages;
 
+    // const {name,email, languages} = users
+    //***I rewrote the destructuring assignment in the function parameter definition***
+
     //7. TODO: rewrite the assignment below to use template strings
-    developers.push(`${name}'s ${email} is ${email} ${name} knows ${languages.join(', ')}`);
+    let formmatedName = name.charAt(0).toUpperCase() + name.slice(1)
+    developers.push(`${formmatedName}'s email is ${email}. ${formmatedName} knows ${languages.join(', ')}.`);
 });
 
 //8. TODO: Use `let` for the following variable
