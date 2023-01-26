@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Promises</title>
+</head>
+<body>
+<script type="module">
+    import { Octokit, App } from "https://cdn.skypack.dev/octokit";
+    //
+    const tempGithubApiToken = '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';
+
+    const octokit = new Octokit({
+        auth: tempGithubApiToken
+    })
+
+    await octokit.request('GET /users/{username}', {
+        username: 'USERNAME'
+    })
+
+</script>
+
+<script src="/js/promises.js"></script>
+</body>
+</html>

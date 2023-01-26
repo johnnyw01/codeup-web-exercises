@@ -1,0 +1,144 @@
+/** {*/
+/*    box-sizing: border-box;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*}*/
+/*img {*/
+/*    max-width: 100%;*/
+/*}*/
+/*body {*/
+/*    font-family: 'Open Sans', sans-serif;*/
+/*    font-size: 16px;*/
+/*    line-height: 1.5;*/
+/*    !*color: #333;*!*/
+/*    background-color: #868e96;*/
+/*}*/
+/*!* THE PAGE WRAPPER MIMICS THE BODY, ONLY WE ARE ABLE TO DO MORE WITH IT IF NECESSARY *!*/
+/*.page-wrapper {*/
+/*    display:flex;*/
+/*    flex-direction: column;*/
+/*    min-height: 100vh;*/
+/*}*/
+
+/*!* THE CONTAINER -- ALSO KNOWN AS A "SECTION" or "WRAPPER" -- IS A FULL WIDTH DIV THAT*/
+/*   SEPARATES SECTIONS OF A WEBSITE. IT ALIGNS IT'S CHILD(REN), THE ROW, TO ITS CENTER,*/
+/*   ALLOWING THE ROW TO PROPERLY CONTROL MAX-WIDTH ON SITE CONTENT *!*/
+/*.container {*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    align-items:center;*/
+/*    flex: 0 0 auto;*/
+/*    padding: 20px;*/
+/*}*/
+/*.container-header{*/
+/*    margin-bottom: 3rem;*/
+/*}*/
+/*!* THE ROW ESTABLISHES MAXIMUM WIDTH ON SITE CONTENT, AND ORGANIZES ITS CHILD(REN), THE*/
+/*   COLUMN, HORIZONTALLY. *!*/
+/*.row {*/
+/*    display: flex;*/
+/*    width: 100%;*/
+/*    max-width: 900px;*/
+/*    padding: 0 20px;*/
+/*    column-gap: 20px;*/
+/*}*/
+/*.main-content-row{*/
+/*    border: 1px solid #e9ecef;*/
+/*}*/
+/*!* OPTIONAL COMBO CLASS TO MAKE ROW FULL-WIDTH *!*/
+/*.row.full-width {*/
+/*    max-width: 100%;*/
+/*    padding: 2rem;*/
+/*    margin: 1rem;*/
+/*}*/
+/*!* OPTIONAL COMBO CLASS TO MAKE ROW COLUMNS SPACED APART *!*/
+/*.row.space-between {*/
+/*    justify-content: space-between;*/
+/*}*/
+/*!* COLUMNS WILL, BY DEFAULT, SHARE SPACE EQUALLY HORIZONTALLY WITHIN THE ROW WITH*/
+/*   THEIR SIBLINGS. CONTENT PUT INSIDE THEM WILL STACK VERTICALLY. *!*/
+/*.column {*/
+/*    display:flex;*/
+/*    flex-direction: column;*/
+/*    flex: 1 0;*/
+/*    min-width: 0px;*/
+/*}*/
+/*!* OPTIONAL COMBO CLASS TO MAKE A COLUMN SHRINK INSTEAD OF GROW *!*/
+/*.column.col-shrink {*/
+/*    flex: 0 1 auto;*/
+/*}*/
+
+
+/*!***********CUSTOM MAP, CONTAINER, AND ASIDE SECTION STYLES***********!*/
+/*#map {*/
+/*    !* the width and height may be set to any size *!*/
+/*    max-width: unset;*/
+/*    !*height: 50%;*!*/
+/*    flex-grow: 1;*/
+
+/*}*/
+/*!*header.container {*!*/
+/*!*    border-bottom: 1px solid rgba(0, 0, 0, 0.78);*!*/
+/*!*}*!*/
+/*main.container, main.container>.row {*/
+/*    padding: 0;*/
+/*    flex-grow: 1;*/
+/*    column-gap: 0px;*/
+/*}*/
+/*aside.column {*/
+/*    width: 300px;*/
+/*    flex: none;*/
+/*}*/
+/*a{*/
+/*    text-decoration: none;*/
+/*    !*color: #22b8cf;*!*/
+/*}*/
+/*.mapboxgl-popup-content{*/
+/*    text-align: center;*/
+/*    font-size: 0.8rem;*/
+/*}*/
+/*.mapboxgl-popup-content-hidden{*/
+/*    visibility: hidden;*/
+/*}*/
+/*.footer{*/
+/*    margin: 5rem auto;*/
+/*}*/
+body{
+    background-color: #f1f3f5;
+}
+#map {
+    max-width: 100vw;
+    min-height: 100vh;
+    margin: 2rem auto 5rem auto;
+    /*border: 2px #000 solid;*/
+    border-radius: 7px ;
+
+}
+.navbar{
+    background-color: #f1f3f5;
+    border-bottom: 1px solid #adb5bd;
+
+}
+.navbar-toggler{
+    margin-left: auto;
+}
+.map-logo{
+    color: #3bc9db;
+}
+.maps-link:hover{
+    color: #3bc9db;
+}
+.mapboxgl-marker{
+    visibility: visible;
+}
+/*.mapboxgl-ctrl-group{*/
+/*    background-color: #FFFFFF ;*/
+/*}*/
+
+/*.mapboxgl-popup-content{*/
+/*    text-align: center;*/
+/*    font-size: 0.8rem;*/
+/*}*/
+/*.mapboxgl-popup-content-hidden {*/
+/*    visibility: hidden;*/
+/*}*/

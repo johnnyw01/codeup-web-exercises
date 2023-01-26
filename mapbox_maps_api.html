@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--MapBox JS-->
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+    <!--MapBox CSS-->
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <!--Font Awesome Icons-->
+    <script src="https://kit.fontawesome.com/7e4e2e5393.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="/css/resets.css">
+    <title>Mapbox Maps Api</title>
+</head>
+
+<body>
+<!-- The HTML element that serves as the Mapbox container -->
+<!--<div id='map' style='width: 90rem; height: 50rem; margin: 5rem auto; border: 2px #000 solid;'></div>-->
+
+<div class="page-wrapper">
+    <main class="container">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container">
+                <a class="navbar-brand py-4 map-logo ">Maps</a>
+                <button class="navbar-toggler shadow-lg round" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                    <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+                        <ul class="navbar-nav">
+                            <li class="nav-item">
+                                <a class="nav-link maps-link" aria-current="page" href="#"> <i class="fa-solid fa-magnifying-glass"></i> Explore</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link maps-link" href="#"> <i class="fa-solid fa-traffic-light"></i> Traffic</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link maps-link" href="#"> <i class="fa-solid fa-flag"></i> Recent Check-in</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link maps-link" href="#"> <i class="fa-solid fa-location-dot"></i> Favorite Spots</a>
+                            </li>
+                        </ul>
+                    </div>
+            </div>
+        </nav>
+        <div class="map shadow-lg round " id='map'></div>
+        <button class="button" id="btn" type="button">Clear Markers</button>
+    </main>
+</div>
+
+<!--Keys-->
+<script src="/js/keys.js"></script>
+
+<!--Mapbox Geocoder Util Methods-->
+<script src="/js/mapbox-geocoder-utils.js"></script>
+
+<!-- Loads the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<!--Custom JS-->
+<script>
+
+    const myToken = keys.mapbox;
+
+    const map = new mapboxgl.Map({
+        accessToken: myToken,
+        container: 'map', // container ID
+        style: 'mapbox://styles/mapbox/streets-v12', // style URL
+        center:[-98.4916, 29.4260], // starting position [lng, lat]
+        zoom: 10, // starting zoom
+
+        //parameters for the 3D version
+        // pitch: 5,
+        // bearing: 5,
+        // style: 'mapbox://styles/mapbox/satellite-streets-v12'
+    });
+
+    //3D model code start
+
+//     map.on('style.load', () => {
+//         map.addSource('mapbox-dem', {
+//             'type': 'raster-dem',
+//             'url': 'mapbox://mapbox.mapbox-terrain-dem-v1',
+//             'tileSize': 512,
+//             'maxzoom': 14
+//         });
+// // add the DEM source as a terrain layer with exaggerated height
+//         map.setTerrain({ 'source': 'mapbox-dem', 'exaggeration': 1.5 });
+//     });
+
+    //3D model code end
+
+
+    let favoriteRestaurants = [
+        {
+            "name": "Bingo Burger",
+            "address": "32 N Tejon St, Colorado Springs, CO 80903",
+            "longlat": [-104.823540, 38.834840],
+            "price": "$$$",
+            "popupHTML": "<p>Best place for a craft burger and local beer in the downtown area.</p>"+"<a href='https://www.bingoburger.com/'>Bingo Burger</a>",
+            "categories": [
+                "american",
+                "craft",
+                "burger",
+                "lunch",
+                "dinner",
+                "take-out"
+            ]
+        },
+        {
+            "name": "El Cevichero",
+            "address": "1019 Cupples Rd, San Antonio, TX 78237",
+            "longlat": [-98.549000, 29.399790],
+            "price": "$$",
+            "popupHTML": "<p>El Cevichero has the best Quesitacos de Birria!</p>"+"<a href='https://www.instagram.com/el_cevichero1/?hl=en'>El Cevichero</a>",
+            "categories": [
+                "mexican",
+                "lunch",
+                "dinner",
+                "take-out",
+                "food-truck"
+            ]
+        },
+        {
+            "name": "Gumbeaux's, A Cajun Cafe",
+            "address": "12407 Veterans Memorial Hwy, Douglasville, GA 30134",
+            "longlat": [-84.749397, 33.750740],
+            "price": "$$$$",
+            "popupHTML": "<p>Gumbeaux's has the best cajun in Georgia!</p>"+"<a href='https://www.gumbeauxs.com/index.html'>Gumbeaux's Cajun Cafe</a>",
+            "categories": [
+                "new orleans",
+                "cajun",
+                "dinner",
+                "take-out"
+            ]
+        },
+        {
+            "name": "The Shed",
+            "address": "7925 Buffalo Gap Rd, Abilene, TX 79606",
+            "longlat": [-99.785300, 32.354140],
+            "price": "$$$$",
+            "popupHTML": "<p>Get the two meat plate with brisket and jalapeño sauage!</p>"+"<a href='https://theshedabilene.com/'>The Shed</a>",
+            "categories": [
+                "bbq",
+                "lunch",
+                "dinner",
+                "take-out",
+            ]
+        },
+        {
+            "name": "The Happy Viking",
+            "address": "741 Plumas St, Yuba City, CA 95991",
+            "longlat": [-121.616680, 39.138480],
+            "price": "$$$",
+            "popupHTML": "<p>Best wings and beer selection north of Sacramento</p>"+"<a href='https://www.thehappyviking.net/'>The Happy Viking</a>",
+            "categories": [
+                "wings",
+                "sandwiches",
+                "beer",
+                "lunch",
+                "dinner",
+                "take-out"
+            ]
+        },
+    ]
+
+    function getFavRestaurants (arr){
+        arr.forEach(function (data){
+            console.log(data.longlat);
+
+            let popup = new mapboxgl.Popup({closeButton: true})
+                .setHTML(data.popupHTML);
+
+
+            // let marker = new mapboxgl.Marker({
+            //     draggable: true
+            // })
+            let marker = new mapboxgl.Marker()
+                .setLngLat(data.longlat)
+                .addTo(map)
+                .setPopup(popup);
+            map.setZoom(4);
+
+            // map.on("click", function (){
+            //     marker.remove();
+            // })
+
+            return marker;
+
+        });
+    }
+
+    // let button = document.getElementById("#btn");
+    // button.addEventListener("click", function (){
+    //     map.marker.remove();
+    // })
+
+    getFavRestaurants(favoriteRestaurants);
+
+    // Adds the search bar control to the map.
+    map.addControl(
+        new MapboxGeocoder({
+            accessToken: myToken,
+            mapboxgl: mapboxgl
+        })
+    );
+
+    // const scale = new mapboxgl.ScaleControl({
+    //     maxWidth: 100,
+    //     unit: 'imperial'
+    // });
+    // map.addControl(scale);
+    //
+    // scale.setUnit('imperial');
+
+    // Adds zoom and rotation controls to the map.
+    // map.addControl(new mapboxgl.NavigationControl());
+    const nav = new mapboxgl.NavigationControl();
+    map.addControl(nav, 'bottom-right');
+
+    //Adds a toggle to allow for full screen zoom
+    const fullscreen = new mapboxgl.FullscreenControl({container: document.querySelector('body')})
+    map.addControl(fullscreen, 'bottom-left');
+
+    //Allows the user to select how they want to zoom, rotate, or move across the map
+    // document.getElementById('listing-group').addEventListener('change', (e) => {
+    //     const handler = e.target.id;
+    //     if (e.target.checked) {
+    //         map[handler].enable();
+    //     } else {
+    //         map[handler].disable();
+    //     }
+    // });
+
+</script>
+</body>
+</html>

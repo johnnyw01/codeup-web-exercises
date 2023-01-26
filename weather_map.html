@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!--MapBox JS-->
+  <script src='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.js'></script>
+  <!--MapBox CSS-->
+  <link href='https://api.mapbox.com/mapbox-gl-js/v2.12.0/mapbox-gl.css' rel='stylesheet' />
+  <!--Browser Tab Icon-->
+  <link rel="icon" href="/images/weather_map/weather.ico">
+  <!--Google Fonts-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;700&display=swap" rel="stylesheet">
+  <!--Bootstrap-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+  <!--Custom CSS-->
+  <link rel="stylesheet" href="/css/weather_map.css">
+  <title>Weather App</title>
+</head>
+
+<body>
+<div class="page-wrapper">
+  <section class="top">
+    <div class="container">
+      <h1 class="heading">Welcome to Today's Weather App</h1>
+      <h3 class="sub-heading">Find the 5-day weather forecast information in your area by searching for a city or dragging the map marker anywhere on the map</h3>
+      <form>
+        <input type="text" class="user-search" placeholder="Enter city name" autofocus>
+        <button class="submit-btn" type="submit">SUBMIT</button>
+      </form>
+      <div class="msg"></div>
+    </div>
+  </section>
+  <!--CURRENT CARD-->
+  <div class="container-fluid d-flex justify-content-center text-center opacity-75">
+    <div class="row d-flex" id="current"></div>
+  </div>
+  <!--5-DAY CARDS-->
+  <div class="container-fluid d-flex text-center opacity-75">
+      <div class="row d-flex mb-5" id="user-location">
+    </div>
+  </div>
+  <!--MAP-->
+  <div class="container-fluid">
+    <div class="row d-flex">
+      <div class="col">
+        <div class="map" id='map'></div>
+      </div>
+    </div>
+  </div>
+
+
+  <footer>
+    <h3 class="footer">*Powered by OpenWeather Map API</h3>
+  </footer>
+</div>
+
+<script src="/js/keys.js"></script>
+<!--jQuery-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<!--Mapbox Geocoder Util Methods-->
+<script src="/js/mapbox-geocoder-utils.js"></script>
+<!-- Loads the `mapbox-gl-geocoder` plugin. -->
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.min.js"></script>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css" type="text/css">
+<!--Bootstrap-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN" crossorigin="anonymous"></script>
+
+<script>
+
+"use strict";
+
+  ///////////MAPBOX_JS///////////////
+
+  //Creates the map
+  const myToken = keys.mapbox;
+  const openWeather = keys.openWeather;
+
+  const map = new mapboxgl.Map({
+    accessToken: myToken,
+    container: 'map', // container ID
+    style: 'mapbox://styles/mapbox/streets-v12', // style URL
+    center:[-98.4916, 29.4260], // starting position [lng, lat]
+    zoom: 4, // starting zoom
+  });
+
+
+// Adds zoom and rotation controls to the map.
+const nav = new mapboxgl.NavigationControl();
+map.addControl(nav, 'bottom-right');
+
+//Adds a toggle to allow for full screen zoom
+const fullscreen = new mapboxgl.FullscreenControl({container: document.querySelector('body')})
+map.addControl(fullscreen, 'bottom-left');
+
+  // Adds a geocoder search bar to the map to make it a functional search map
+  map.addControl(
+          new MapboxGeocoder({
+            accessToken: myToken,
+            mapboxgl: mapboxgl
+          })
+  );
+
+  //Populates a draggable maker for the user to place on the map
+  const marker = new mapboxgl.Marker({draggable: true})
+          .setLngLat([-98.4916, 29.4260])
+          .addTo(map);
+
+
+
+  //Gets the lat and lng coordinates from where the marker is placed and grabs the 5-day forecast information for the user
+  function onDragEnd() {
+    const lngLat = marker.getLngLat();
+    console.log(lngLat);
+    event.preventDefault();
+
+    $.get('https://api.openweathermap.org/data/2.5/forecast', {
+      lat:lngLat.lat,
+      lon: lngLat.lng,
+      appid: openWeather,
+      units: 'imperial'
+    }).done(function (data) {
+      $(data).each(function (index, data){
+        addData(data);
+        currentWeather(data);
+      });
+    }).fail(function (jqXhr, status, error) {
+      console.log(jqXhr);
+      console.log(status);
+      console.log(error);
+    });
+  }
+
+  marker.on('dragend', onDragEnd);
+
+
+  ////////Weather_Map JS////////
+
+
+  //Creates the single current weather card
+  function currentWeather (data){
+    const iconUrl = `https://openweathermap.org/img/wn/${data.list[0].weather[0].icon}@2x.png`;
+    const d = new Date(data.list[0].dt_txt);
+    const day = d.toLocaleDateString();
+    let currentHtml = '';
+    currentHtml = `
+                  <div class="card d-flex card-custom col-lg-12 col-md-10 col-sm-12  opacity-75">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h1 class="date">${day}</h1>
+                            <h1 class="city-name">${data.city.name},${data.city.country}</h1>
+                                <h3 class="currently">Currently</h3>
+                                <div class="city-temp">${data.list[0].main.temp}<sup>°F</sup></div>
+                                <h3 class="lows-highs">
+                                   <figure class="fig-custom">
+                                     <img class="city-icon" src="${iconUrl}" alt="${data.list[0].weather[0].description}">
+                                       <figcaption class="icon-caption">${data.list[0].weather[0].description}</figcaption>
+                                   </figure>
+                                </h3>
+                        </div>
+                    </div>
+                  </div>
+
+    `;
+    $('#current').append(currentHtml);
+  }
+
+  //Creates the individual cards that contain the 5-day weather forecast
+  function addData(data){
+    console.log(data);
+    let html = " ";
+    for (let i = 0; i < data.list.length; i += 8) {
+      // console.log(data)
+      const iconUrl = `https://openweathermap.org/img/wn/${data.list[i].weather[0].icon}@2x.png`;
+      const d = new Date(data.list[i].dt_txt);
+      const day = d.toLocaleDateString();
+      html = `
+                <div class="card d-flex col-lg-2 col-md-6 col-sm-12">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h1 class="date">${day}</h1>
+                            <h1 class="city-name">${data.city.name},${data.city.country}</h1>
+                                <h3 class="lows-highs">
+                                    <figure>
+                                      <img class="city-icon" src="${iconUrl}" alt="${data.list[i].weather[0].description}">
+                                        <figcaption class="icon-caption">${data.list[i].weather[0].description}</figcaption>
+                                    </figure>
+                                    <p class="data-category data-value">High / ${data.list[i].main.temp_max}<sup>°F</sup></p>
+                                    <p class="data-category data-value">Low / ${data.list[i].main.temp_min}<sup>°F</sup></p>
+                                </h3>
+                        </div>
+                    </div>
+                </div>
+            `;
+      $('#user-location').append(html);
+    }
+
+  }
+
+  // Allows the user to search for a city in the search bar and populates the 5-day forecast upon pressing the submit button
+  const form = document.querySelector(".top form");
+  const input = document.querySelector(".user-search");
+  const btn = document.querySelector('.submit-btn')
+  const msg = document.querySelector(".top .msg");
+  const list = document.querySelector(".card .cities");
+
+  function getSearchData (e) {
+    e.preventDefault();
+    const inputVal = input.value;
+
+    $.get('https://api.openweathermap.org/data/2.5/forecast', {
+      q: inputVal,
+      state: inputVal,
+      appid: openWeather,
+      units: 'imperial'
+    }).done(function(data) {
+      $(data).each(function (index, data){
+        addData(data);
+        currentWeather(data);
+
+        //Moves the map marker to the location that the user searched for
+        geocode(inputVal, myToken).then(function (data){
+          // console.log(data);
+          map.setZoom(13);
+          map.flyTo({
+            center: [data[0], data[1]],
+            essential: true // this animation is considered essential with respect to prefers-reduced-motion
+          });
+
+        })
+
+      });
+    }).fail(function(jqXhr, status, error) {
+      msg.textContent = "***Please enter a valid city name, city name with first 3 digits of the state name seperated with a comma, or city name with two-letter country code***";
+      console.log(jqXhr);
+      console.log(status);
+      console.log(error);
+    });
+    msg.textContent = "";
+    form.reset();
+    input.focus();
+
+  }
+  $('.submit-btn').on("click",  getSearchData);
+
+
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,405 @@
+/* Common Styles Section */
+:root {
+    --bg_main: #1D71F2;
+    --card-bg: #dee2e6;
+    --text_light: #fff;
+    --text_med: #53627c;
+    --text_dark: #1e2432;
+    --SpiroDiscoBall: #19C3FB;
+    --ButtonBlue: #1C9CF6;
+    --CrayolaBlue: #1D71F2;
+    --Caveat: font-family 'Caveat', cursive;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button {
+    cursor: pointer;
+}
+
+
+button,
+input {
+    border: none;
+    background: none;
+    outline: none;
+    color: inherit;
+    font-family: var(--Caveat);
+}
+
+img {
+    /*display: block;*/
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+
+ul {
+    list-style: none;
+}
+.page-wrapper {
+    min-height: 100vh;
+    background-image: url("/codeup-web-exercises/images/weather_map/evening-clouds.jpeg");
+    background-size: cover;
+}
+body {
+    font: 1rem 'Caveat', cursive;
+    color: var(--text_dark);
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* Search Form Section */
+.top {
+    color: var(--text_light);
+}
+
+.heading {
+    font-weight: bold;
+    font-size: 4rem;
+    letter-spacing: 0.02em;
+    padding: 0 0 30px 0;
+    text-align: center;
+}
+
+.sub-heading {
+    font-size: 2.2rem;
+    letter-spacing: 0.02em;
+    padding: 0 0 30px 0;
+    margin: 2rem auto;
+    text-align: center;
+}
+
+.top form {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.top form input {
+    font-size: 2rem;
+    height: 40px;
+    padding: 5px 5px 10px;
+    border-bottom: 1px solid;
+    text-align: center;
+}
+
+.top form input::placeholder {
+    color: currentColor;
+    text-align: center;
+}
+
+.top form button {
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    padding: 15px 20px;
+    margin-left: 15px;
+    border-radius: 5px;
+    background: var(--SpiroDiscoBall);
+    transition: background 0.3s ease-in-out;
+}
+
+.top form button:hover {
+    background: var(--ButtonBlue);
+}
+
+.msg {
+    max-width: 450px;
+    min-height: 40px;
+    text-align: center;
+    font-size: 1.2rem;
+    margin: 2rem auto;
+}
+
+/* Main Card Section */
+.card-custom{
+    margin: 3rem auto;
+    word-wrap: break-word;
+    background-color: var(--card-bg);
+    border-radius: 5px;
+}
+.card {
+    margin: 3rem auto;
+    background-color: var(--card-bg);
+}
+
+.name {
+    margin-bottom: 1rem;
+}
+
+
+.card .card-custom .city {
+    position: relative;
+    padding: 40px 10%;
+    border-radius: 20px;
+    background: var(--text_light);
+    color: var(--text_med);
+    text-align: center;
+}
+
+.card .card-custom .city::after {
+    content: '';
+    width: 90%;
+    height: 50px;
+    position: absolute;
+    bottom: -12px;
+    left: 5%;
+    z-index: -1;
+    opacity: 0.3;
+    border-radius: 20px;
+    background: var(--text_light);
+}
+
+.card .card-custom figcaption {
+    margin-top: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.currently {
+    font-size: 3rem;
+    font-weight: bold;
+    margin-top: 10px;
+    color: var(--SpiroDiscoBall);
+    word-wrap: break-word;
+}
+
+.card .card-custom, .city-temp {
+    font-size: 4rem;
+    font-weight: bold;
+    color: var(--text_dark);
+}
+
+.sup {
+    top: -0.7em;
+    margin-left: 0.2em;
+    /*font-size: 2rem;*/
+}
+
+.city-temp sup {
+    font-size: 0.5em;
+    margin-left: 0.8rem;
+    text-align: center;
+    padding: 0.2em 0.6em;
+    margin-right: 0.5rem;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--CrayolaBlue);
+}
+
+.city-name, .date {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin: 2rem 0;
+}
+
+.card .card-custom .city-name .city-temp sup {
+    text-align: center;
+    padding: 0.2em 0.6em;
+    margin-right: 0.5rem;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--CrayolaBlue);
+}
+
+.lows-highs sup {
+    text-align: center;
+    padding: 0.1em 0.5em;
+    border-radius: 30px;
+    color: var(--text_light);
+    background: var(--CrayolaBlue);
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+}
+
+figure {
+    margin: 3rem 0;
+    background-color: #ced4da;
+    border-radius: 5px;
+}
+.fig-custom{
+    padding: 1rem;
+}
+
+.card .card-custom .city-icon {
+    margin: 10px auto;
+    width: 100px;
+    height: 100px;
+}
+
+
+.data-category{
+    margin-top: 3rem;
+    font-size: 3rem
+}
+
+.data-value, .icon-caption  {
+    font-size: 3.5rem;
+}
+/*Map Section*/
+.map{
+    width: 90%;
+    height: 80vh;
+    border-radius: 5px;
+    margin: 0 auto;
+}
+/*Footer Section*/
+.footer {
+    text-align: center;
+    font-size: 1rem;
+    color: var(--text_light);
+    margin-top: 5rem;
+}
+
+.footer span {
+    color: var(--SpiroDiscoBall);
+}
+
+/* Media Queries Section */
+
+
+@media screen and (max-width: 567px) {
+    body {
+        font-size: 1.5rem;
+        /*padding: 15px;*/
+    }
+
+    .top form {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 3rem auto;
+        width: 75%;
+    }
+    .top form .msg {
+        font-size: 1.4rem;
+        max-width: 450px;
+        min-height: 40px;
+        text-align: center;
+        margin: 1rem auto;
+    }
+    .top form button {
+
+        font-size: 1rem;
+        font-weight: bold;
+        letter-spacing: 0.1em;
+        padding: 15px 20px;
+        margin-top: 3rem;
+        margin-left: 15px;
+        border-radius: 5px;
+        background: var(--SpiroDiscoBall);
+        transition: background 0.3s ease-in-out;
+        width: 100%;
+    }
+}
+
+
+@media screen and (min-width: 567px) and (max-width: 767px) {
+    body {
+        font-size: 1.5rem;
+        /*padding: 15px;   */
+    }
+
+    .heading,
+    .card, .card-custom .city-temp {
+        /*font-size: 3rem;*/
+    }
+
+    .card, .card-custom  {
+        margin-top: 20px;
+    }
+
+    .top form {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .top form input,
+    .top form button {
+        width: 100%;
+    }
+
+    .top form button {
+        margin: 20px 0 0 0;
+    }
+
+    .top form .msg {
+        font-size: 1rem;
+        max-width: 450px;
+        min-height: 40px;
+        text-align: center;
+        margin: 2rem auto auto auto;
+    }
+
+    .city-name,
+    .date,
+    .name {
+        font-size: 7rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .currently,
+    .city-temp,
+    .city-icon {
+        font-size: 5.5rem
+    }
+
+    .lows-highs,
+    .data-category {
+        margin-top: 5rem;
+        font-size: 5rem
+    }
+
+    .data-value {
+        margin-top: 1rem;
+        font-size: 5rem;
+    }
+}
+
+@media screen and (min-width: 767px) and (max-width: 992px) {
+    body {
+        font-size: 1.5rem;
+    }
+
+    .city-name,
+    .date,
+    .name {
+        font-size: 5rem;
+        margin-bottom: 2.5rem;
+    }
+
+    .currently,
+    .city-temp,
+    .city-icon {
+        font-size: 4.5rem
+    }
+
+    .lows-highs,
+    .data-category {
+        margin-top: 5rem;
+        font-size: 3rem
+    }
+
+    .data-value {
+        margin-top: 1rem;
+        font-size: 3.5rem;
+    }
+}

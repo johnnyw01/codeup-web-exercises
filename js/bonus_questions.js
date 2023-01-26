@@ -654,3 +654,62 @@ const isDesirable = (obj) => {
     // console.log(encodeStr('SASS'));
     // console.log(encodeStr('bike'));
 
+// Make a function, reverseStrings, that takes in an array of objects and reverses the value of the 'str' properties.
+
+
+    const strs = [
+    {
+        id: 1,
+        str: 'hello'
+    },
+    {
+        id: 2,
+        str: 'world'
+    },
+    {
+        id: 3,
+        str: 'codeup'
+    },
+    {
+        id: 4,
+        str: 'x'
+    }
+]
+
+const reverseStrings = (arr) => {
+    let newArr = [];
+    arr.forEach((item)=>{
+        item.str = item.str.split("").reverse().join("");
+       //  let reversed = item.str.split("").reverse().join("");
+       //  let obj = {
+       //      id: item.id,
+       //      str: reversed
+       //  }
+       // newArr.push(obj)
+    })
+    return arr;
+    // return newArr;
+}
+
+console.log(reverseStrings(strs))// returns...
+    //
+    // [
+    // {
+    //     id: 1,
+    //     str: 'olleh'
+    // },
+    //     {
+    //         id: 2,
+    //         str: 'dlrow'
+    //     },
+    //     {
+    //         id: 3,
+    //         str: 'puedoc'
+    //     },
+    //     {
+    //         id: 4,
+    //         str: 'x'
+    //     }
+    // ]
+
+
