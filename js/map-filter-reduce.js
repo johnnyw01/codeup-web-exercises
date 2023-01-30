@@ -69,13 +69,13 @@ const  longestEmail = users.reduce((longestEmailAddress, user)=>{
 
     const getNames = users.reduce((names, user, index) => {
         if (index === users.length - 1) {
-            return names + user.name;
+            return names + user.name + '.';
         } else {
-            return names + user.name + ', ';
+            return names + user.name + ', ' ;
         }
     }, "Your instructors are: ");
 
-console.log(getNames);
+// console.log(getNames);
 
 const languages = [...new Set(users.reduce((languages, user) => {
     return languages.concat(user.languages);

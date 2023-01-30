@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Warm-ups</title>
+</head>
+<style>
+    .btn{
+        width: 150px;
+        height: 50px;
+        border-radius: 10px;
+        background-color: darkgreen;
+        color: #fff;
+        border: 1px solid black;
+    }
+    .red {
+        background: red;
+    }
+</style>
+<body>
+<button class="btn" id="btn" type="button">Change Background Color</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+<script>
+    //jQuery
+  $('.btn').on('click',()=> {
+    console.log('I was clicked!');
+    $('body').css('background-color', 'blue');
+  });
+
+    // extra challenge
+    // $('button').on('click', function() {
+    //     $('body').toggleClass('red');
+    // });
+
+    // $('button').on('click', (e) => {
+    //     console.log(e.offsetX);
+    //     // $(this).css('background', 'red');
+    // });
+
+
+    //Vanilla JS
+// document.querySelector('.btn').addEventListener('click', function (){
+//       document.querySelector('body').style.background ='yellow';
+//   })
+
+</script>
+</body>
+</html>
